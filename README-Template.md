@@ -1,18 +1,18 @@
-# Project Title
+# Understanding Human Gaze Communication by Spatio-Temporal Graph Reasoning
 
-One Paragraph of project description goes here
+This paper addresses a new problem of understanding human gaze communication in social videos from both atomic-level and event-level, which is significant for studying human social interactions. To tackle this novel and challenging problem, we contribute a large-scale video dataset, VACATION, which covers diverse daily social scenes and gaze communication behaviors with complete annotations of objects and human faces, human attention, and communication structures and labels in both atomic-level and event-level. Together with VACATION, we propose a spatiotemporal graph neural network to explicitly represent the diverse gaze interactions in the social scenes and to infer atomic-level gaze communication by message passing. We further propose an event network with encoder-decoder structure to predict the event-level gaze communication. Our experiments demonstrate that the proposed model improves various baselines significantly in predicting the atomic-level and event-level gaze communications. 
 
-## Getting Started
+%## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+%These instructions will get you a copy of the project up and running on your local machine for development and testing %purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+%### Prerequisites
 
-What things you need to install the software and how to install them
+%What things you need to install the software and how to install them
 
-```
-Give examples
-```
+%```
+%Give examples
+%```
 
 ### Installing
 
