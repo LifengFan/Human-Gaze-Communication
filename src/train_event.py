@@ -6,7 +6,6 @@ from torch.utils.data import DataLoader
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-import os.path as op
 
 CLASS = ['SingleGaze', 'MutualGaze', 'AvertGaze', 'GazeFollow', 'JointAtt']
 
@@ -105,7 +104,6 @@ def get_metric_from_confmat(confmat):
 
     print('===> Accuracy: {} %'.format(acc*100))
 
-
 trainloader = train_loader()
 testloader = test_loader()
 criterion = nn.CrossEntropyLoss()
@@ -153,12 +151,9 @@ for epoch in range(100):  # loop over the dataset multiple times
 
         # print statistics
         running_loss += loss.item()
-        print('[%d, %5d] loss: %.3f' %(epoch + 1, i + 1, running_loss / 2000))
+        print('[%d, %5d] loss: %.3f' %
+              (epoch + 1, i + 1, running_loss / 2000))
         running_loss = 0.0
-
-        torch.save(net.state_dict(), op.join('./model_event.pth'))
-
-
 
 
 print('Finished Training')
@@ -182,9 +177,11 @@ with torch.no_grad():
 get_metric_from_confmat(confmat)
 
 
-print('Top-1 Accuracy of the network on the test images: %f %%' % (100 * correct / total))
+print('Top-1 Accuracy of the network on the test images: %f %%' % (
+        100 * correct / total))
 
-print('Top-2 Accuracy of the network on the test images: %f %%' % (100 * correct_2 / total))
+print('Top-2 Accuracy of the network on the test images: %f %%' % (
+        100 * correct_2 / total))
 
 
 
