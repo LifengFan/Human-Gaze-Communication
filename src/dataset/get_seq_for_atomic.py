@@ -473,7 +473,6 @@ def find_atomic_refer():
                             except:
                                 end_fid = t_fid - 1
                                 break
-                        #todo: invalid try here!
 
                         if start_fid-5>=0 and len(video[start_fid-5]['ant'])>nid2 and len(video[start_fid-4]['ant'])>nid2 \
                             and len(video[start_fid-3]['ant'])>nid2 and len(video[start_fid-2]['ant'])>nid2 \
