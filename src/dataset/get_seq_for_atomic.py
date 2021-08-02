@@ -636,85 +636,6 @@ def visualize_seq(seq, save_path, mode):
             im.save(op.join(save_path, vid, str(i_seq), str(f_index)+'.jpg'))
 
 
-def sample_atomic_seq(sq_l=5):
-
-    seq_dict={'single':[],'mutual':[],'avert':[],'refer':[],'follow':[],'share':[]}
-
-    mode_all=['single','mutual','avert','refer','follow','share']
-
-    #mode_all=['follow']
-
-    for mode in mode_all:
-
-        seq_all=np.load(op.join(data_root, 'atomic', '{}.npy'.format(mode)))
-
-        for i in range(len(seq_all)):
-
-            seq=seq_all[i]
-            for j in range(len(seq)):
-                print('{} vid {} seq {}'.format(mode, i, j))
-
-                [vid, nid1, nid2, start_fid, end_fid]=seq[j]
-
-                if mode in ['single', 'mutual', 'share']:
-
-                    t_fid = start_fid
-
-                    while (True):
-                        if t_fid + 4 <= end_fid:
-                            seq_dict[mode].append([vid, nid1, nid2, t_fid, t_fid + 4, mode])
-                            t_fid+=5
-                        else:
-                            break
-
-                elif mode in ['avert', 'refer', 'follow']:
-
-                    video = np.load(op.join(data_root, 'ant_processed', 'vid_{}_ant_all.npy'.format(vid)))
-
-                    break_rec = []
-                    for t_fid in range(start_fid + 1, end_fid + 1):
-
-                        if video[t_fid]['ant'][nid1]['SmallAtt'] == mode and video[t_fid - 1]['ant'][nid1]['SmallAtt'] != mode:
-                            break_rec.append(t_fid)
-                        else:
-                            try:
-                                if video[t_fid]['ant'][nid2]['SmallAtt'] == mode and video[t_fid - 1]['ant'][nid2]['SmallAtt'] != mode:
-                                    break_rec.append(t_fid)
-                            except:
-                                pass
-
-
-                    if len(break_rec) > 0:
-                        for bk in break_rec:
-
-                            # todo: invalid try here!
-                            if bk+4<len(video) and len(video[bk+4]['ant'])>nid2 and len(video[bk+3]['ant'])>nid2 and len(video[bk+2]['ant'])>nid2 \
-                                and len(video[bk+1]['ant'])>nid2:
-                                seq_dict[mode].append([vid, nid1, nid2, bk, bk + 4, mode])
-
-                            elif bk+3<len(video) and bk-1>=0 and  len(video[bk+3]['ant'])>nid2 and len(video[bk+2]['ant'])>nid2 \
-                                and len(video[bk+1]['ant'])>nid2 and len(video[bk-1]['ant'])>nid2:
-                                seq_dict[mode].append([vid, nid1, nid2, bk - 1, bk + 3, mode])
-
-                            elif bk+2<len(video) and bk-2>=0 and  len(video[bk+2]['ant'])>nid2 and len(video[bk+1]['ant'])>nid2 \
-                                and len(video[bk-1]['ant'])>nid2 and len(video[bk-2]['ant'])>nid2:
-                                seq_dict[mode].append([vid, nid1, nid2, bk - 2, bk + 2, mode])
-
-                            elif bk+1<len(video) and bk-3>=0 and  len(video[bk+1]['ant'])>nid2 and len(video[bk-1]['ant'])>nid2 \
-                                and len(video[bk-2]['ant'])>nid2 and len(video[bk-3]['ant'])>nid2:
-                                seq_dict[mode].append([vid, nid1, nid2, bk - 3, bk + 1, mode])
-
-
-    f = open(op.join(data_root, 'atomic', "atomic_sample.pkl"), "wb")
-    pickle.dump(seq_dict, f)
-    f.close()
-
-    print('single {} \n mutual {} \n share {} \n avert {} \n follow {} \n refer {}'.
-          format(len(seq_dict['single']), len(seq_dict['mutual']), len(seq_dict['share']), len(seq_dict['avert']),
-                 len(seq_dict['follow']), len(seq_dict['refer'])))
-
-
-
 def main():
 
     find_atomic_single()
@@ -724,11 +645,6 @@ def main():
     find_atomic_follow()
     find_atomic_refer()
 
-    sample_atomic_seq()
-
-    #tmp=np.load(op.join(data_root,'ant_processed','vid_107_ant_all.npy'))
-
-    pass
 
 
 if __name__=='__main__':
