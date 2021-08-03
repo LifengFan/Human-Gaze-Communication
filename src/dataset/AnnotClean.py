@@ -47,8 +47,6 @@ def clean_annt(annot_path,NewAnnot_path,annot_files):
                 occ_flag=tgt[7]
                 label=tgt[9]
 
-                # here didn't judge whether the object is occluded or not
-
                 if int(lost_flag)==1 or int(occ_flag)==1:
                     continue
                 elif label[1:7]=="Object":
