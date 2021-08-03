@@ -24,32 +24,21 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from PIL import Image
 
-
-
-
-
 def extract_node_features(paths,mode):
 
     input_h, input_w=224,224
     node_feature_len=1000
     transform=torchvision.transforms.Compose([torchvision.transforms.ToTensor(),torchvision.transforms.Normalize(metadata.train_mean_value,metadata.train_std_value)])
-
-
     feature_network = roi_feature_model.Resnet152(num_classes=len(metadata.node_classes))
-
     feature_network = torch.nn.DataParallel(feature_network).cuda()
-
-
 
     # get the processed annotation and corresponding original image
 
     ant_files=[f for f in sorted(listdir(os.path.join(paths.data_root,mode,'ant_processed'))) if f.endswith('_ant_all.npy')]
 
-    #todo: to change
+    #for ant_file_ind in [3]:
 
-    for ant_file_ind in [3]:
-
-    #for ant_file_ind in range(len(ant_files)):
+    for ant_file_ind in range(len(ant_files)):
         ant_f=ant_files[ant_file_ind]
 
         vid=ant_f[4:-12]
@@ -109,8 +98,6 @@ def extract_edge_features(paths,mode):
 
     feature_network = torch.nn.DataParallel(feature_network).cuda()
 
-    #todo: to check whether to use finetuned weights or not
-
     # checkpoint_dir = os.path.join(paths.tmp_root, 'checkpoints', 'finetune_resnet')
     # if not os.path.exists(checkpoint_dir):
     #     os.makedirs(checkpoint_dir)
@@ -127,7 +114,6 @@ def extract_edge_features(paths,mode):
     ant_files = [f for f in sorted(listdir(os.path.join(paths.data_root, mode, 'ant_processed'))) if
                  f.endswith('_ant_all.npy')]
 
-    #todo: to change
     #for ant_file_ind in [3]:
 
     for ant_file_ind in range(len(ant_files)):
