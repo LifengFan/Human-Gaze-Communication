@@ -1,5 +1,4 @@
 import sys
-sys.path.append("/home/lfan/Dropbox/Projects/ICCV19/RunComm/src/")
 import torch
 import torch.nn
 import torch.autograd
