@@ -14,8 +14,6 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 import time
 from utils import get_metric_from_confmat
 import matplotlib.pyplot as plt
-# from sync_batchnorm import SynchronizedBatchNorm1d, patch_replication_callback
-
 
 def plot_grad_flow(named_parameters):
     ave_grads = []
