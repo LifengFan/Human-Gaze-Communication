@@ -12,7 +12,7 @@ This paper addresses a new problem of understanding human gaze communication in 
 Dataset
 ----
 
-Please fill this [Google form](https://docs.google.com/forms/d/e/1FAIpQLSeJIwpt5iLDKidj7ne3HSUOYj410FUtiqn8FhbH_rtoitNX4g/viewform?usp=pp_url) to get a copy of the dataset and annotation. We will get back to you in a day or two.
+Please fill this [online form] (https://docs.qq.com/form/page/DTmpKa0NDTVhtZUtF) to get a copy of the dataset and annotation. We will get back to you in a day or two.
 
 Demo
 ----
