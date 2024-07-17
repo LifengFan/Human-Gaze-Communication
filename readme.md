@@ -17,7 +17,7 @@ Please fill this [online form](https://forms.gle/uSeLsShXefyHjAgCA) to get a cop
 Demo
 ----
 
-Here is a demo ([windows](https://www.dropbox.com/s/336mjzlcb14rlbu/iccv19_demo_windows_low_resolution.mp4?dl=0), [linux](https://www.dropbox.com/s/7pvh9bep690vpp0/iccv19_demo_linux_high_resolution.mp4?dl=0)) to show more dynamic results.
+Here is a [demo](https://vimeo.com/985557163?share=copy) to show more dynamic results.
 
 Citation
 ----
