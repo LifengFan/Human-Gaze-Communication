@@ -12,7 +12,11 @@ This paper addresses a new problem of understanding human gaze communication in 
 Dataset
 ----
 
-Please fill this [online form](https://forms.gle/uSeLsShXefyHjAgCA) to get a copy of the dataset and annotation. We will get back to you in a day or two.
+Please directly send an email to this email address: lfan@g.ucla.edu 
+
+**Please also include this promise in your email: I promise to use the dataset for non-commercial, academic, and research purposes only.**
+
+The dataset is available for free only for research purposes.
 
 Demo
 ----
